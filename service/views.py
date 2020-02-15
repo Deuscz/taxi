@@ -32,7 +32,7 @@ class OrderView(TemplateView):
 
 
 # Login view
-class LoginView(TemplateView):
+class LoginLogoutView(TemplateView):
     template_name = 'login.html'
 
     def post(self, request, *args, **kwargs):
