@@ -1,6 +1,6 @@
 # taxi
 
 
-Superuser:
-login: 1111
-password: 1111
+#Superuser:
+#login: 1111
+#password: 1111
