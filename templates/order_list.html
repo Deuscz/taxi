@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+{% if object_list %}
+<div class="container">
+    <div class="row">
+        {% for order in object_list %}
+        <div class="col-md-offset-1 col-md-10 col-sm-12">
+            <div class="blog-post-thumb">
+                <div class="blog-post-title">
+                    <h3><a href="{% url 'detail' order.id %}">Name: {{order.name}}|
+                        Car number: {{order.car.car_num}}|
+                        Order address: {{order.order_add}}
+                        Order status: {{order.status}}</a></h3>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </span>
+    </div>
+</div>
+{% else %}
+{% endif %}
+{% include 'paginator.html' %}
+{% endblock %}

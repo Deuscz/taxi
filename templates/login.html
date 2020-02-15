@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+
+<section id="contact">
+    <div class="col-md-offset-1 col-md-10 col-sm-12">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li
+                    {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% if user.is_authenticated %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-sm-12">
+                <h2>You are loged in</h2>
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="col-md-3 col-sm-6">
+                        <input name="submit" type="submit" class="form-control" id="logout" value="Logout">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    {% else %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-sm-12">
+                <h2>Enter your credentials</h2>
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="col-md-4 col-sm-4">
+                        <input name="username" type="text" class="form-control" id="username" placeholder="username">
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <input name="password" type="password" class="form-control" id="password"
+                               placeholder="password">
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <input name="submit" type="submit" class="form-control" id="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

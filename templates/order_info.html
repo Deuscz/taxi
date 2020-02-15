@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+<section id="blog-single-post">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-sm-12">
+                <div class="blog-single-post-thumb">
+                    <div class="blog-post-title">
+                        <h2>Your name: {{ order.name }}</a></h2>
+                        <h2>Car model: {{ order.car.model }}</a></h2>
+                        <h2>Car number: {{ order.car.car_num }}</a></h2>
+                        <h2>Order address: {{ order.order_add }}</a></h2>
+                        <h2>Destination address: {{ order.destination_add }}</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+

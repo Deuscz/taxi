@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-sm-12">
+                <div class="blog-single-post-thumb">
+                    <div class="blog-post-title">
+                        <h2>Order name: {{ object.name }}</a></h2>
+                        <h2>Car model: {{ object.car.model }}</a></h2>
+                        <h2>Car number: {{ object.car.car_num }}</a></h2>
+                        <h2>Order address: {{ object.order_add }}</a></h2>
+                        <h2>Destination address: {{ object.destination_add }}</a></h2>
+                        <h2>Desired Time: {{ object.des_time }}</a></h2>
+                        <h2>Status: {{ object.status }}</a></h2>
+                        <h2>Order date: {{ object.date }}</a></h2>
+                        {% if object.status == "Closed" %}
+                        {% else %}
+                        <form action="{% url 'close' object.id %}" method="POST">
+                            {% csrf_token %}
+                            <div class="col-md-3 col-sm-6">
+                                <input name="submit" type="submit" class="form-control" id="submit" value="Close order">
+                            </div>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

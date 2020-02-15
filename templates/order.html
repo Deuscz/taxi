@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+
+<section id="contact">
+    <div class="col-md-offset-1 col-md-10 col-sm-12">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li
+                    {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-offset-1 col-md-10 col-sm-12">
+                <h2>Enter your order</h2>
+                <form action="{% url 'order' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="col-md-4 col-sm-4">
+                        <input name="name" type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <input name="phone" type="phone" class="form-control" id="phone" placeholder="Phone">
+                        <small class="form-text text-muted">Phone number must be entered in the format:
+                            "+380(XX)XXX-XX-XX"</small>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <input name="des_time" type="time" class="form-control" id="subject"
+                               placeholder="Desired time">
+                        <small class="form-text text-muted">Desired time</small>
+                    </div>
+                    <div class="col-md-12 col-sm-6">
+                        <textarea name="order_add" rows="3" class="form-control" id="ord"
+                                  placeholder="Order address"></textarea>
+                    </div>
+                    <div class="col-md-12 col-sm-6">
+                        <textarea name="destination_add" rows="3" class="form-control" id="dest"
+                                  placeholder="Destination address"></textarea>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <input name="submit" type="submit" class="form-control" id="submit", value="Send">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
